@@ -1,16 +1,16 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using AokSJ.Puzzles;
+using AokBas.Puzzles;
 using ConsoleTableExt;
 
-var columnNames = new List<string>() { "Puzzel", "Part One", "Part Two" };
+var columnNames = new List<string>() { "System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name", "Part One", "Part Two" };
 var alignments = new Dictionary<int, TextAligntment>
 {
     {1, TextAligntment.Right},
     {2, TextAligntment.Right}
 };
 
-Console.WriteLine("AdventOfCode 2022 | Stefan");
+Console.WriteLine("AdventOfCode 2022 | Stefan!");
 Console.WriteLine("");
 
 var summaries = new List<List<object>>()

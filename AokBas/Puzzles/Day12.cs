@@ -1,4 +1,4 @@
-﻿namespace AokSJ.Puzzles;
+﻿namespace AokBas.Puzzles;
 
 internal class Day12
 {

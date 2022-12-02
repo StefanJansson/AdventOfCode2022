@@ -1,6 +1,6 @@
-﻿namespace AokSJ.Puzzles;
+﻿namespace AokBas.Puzzles;
 
-internal class Day12
+internal class Day17
 {
     public static List<object> Answer()
     {

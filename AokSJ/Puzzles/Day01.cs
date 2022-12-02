@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
-namespace AokSJ.Puzzles
+namespace AokSJ.Puzzles;
+
+internal class Day01
 {
-    internal class Day01
+    public static List<object> Answer()
     {
-        public static List<object> Answer()
-        {
-            var fileData = System.IO.File.ReadAllText(@"..\..\..\..\PuzzelInputs\2022-12-01.txt");
-            var splitFileData = fileData.Split("\n\n");
-            var summaries = splitFileData
-                .Select(_ => Regex.Matches(_, @"\d+")
-                    .Select(_ => Convert.ToInt64(_.Value)).Sum())
-                .OrderByDescending(_ => _)
-                .ToList();
-            return new List<object>() { "2022-12-01", summaries.First(), summaries.Take(3).Sum() };
-        }
+        var puzzelInfo = Helpers.GetPuzzleInfo();
+        if (!puzzelInfo.FileExists)
+            return new List<object>() { puzzelInfo.PuzzleName };
 
+        var fileData = File.ReadAllText(puzzelInfo.FileName);
+        var splitFileData = fileData.Split("\n\n");
+        var summaries = splitFileData
+            .Select(_ => Regex.Matches(_, @"\d+")
+                .Select(match => Convert.ToInt64(match.Value)).Sum())
+            .OrderByDescending(_ => _)
+            .ToList();
+        return new List<object>() { puzzelInfo.PuzzleName, summaries.First(), summaries.Take(3).Sum() };
     }
+
 }
