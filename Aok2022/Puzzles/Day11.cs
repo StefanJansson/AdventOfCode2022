@@ -6,7 +6,7 @@ internal class Day11
     {
         var puzzelInfo = Helpers.Puzzels.GetPuzzleInfo();
         if (!puzzelInfo.FileExists)
-            return new List<object>() { puzzelInfo.PuzzleName };
+            return new List<object>() { puzzelInfo.PuzzleName};
 
         return new List<object>() { puzzelInfo.PuzzleName, "", "" };
     }

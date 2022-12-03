@@ -12,4 +12,4 @@ var summaries = new List<List<object>>()
     Day21.Answer(), Day22.Answer(), Day23.Answer(), Day24.Answer()
 };
 
-Helpers.Presentation.DisplayResult(2022, summaries);
+Helpers.Presentation.DisplayResult(2021, summaries);

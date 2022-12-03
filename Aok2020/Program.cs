@@ -23,13 +23,4 @@ var summaries = new List<List<object>>()
     Day21.Answer(), Day22.Answer(), Day23.Answer(), Day24.Answer()
 };
 
-var daysToShow = DateTime.Compare(DateTime.Now.Date, DateTime.Parse("2022-12-24").Date) > 0 ? 24 : DateTime.Now.Day;
-
-ConsoleTableBuilder
-    .From(summaries.Take(daysToShow).ToList())
-    .WithColumn(columnNames)
-    .WithFormat(ConsoleTableBuilderFormat.Minimal)
-    .WithTextAlignment(alignments)
-
-    //.WithOptions(new ConsoleTableBuilderOption { DividerString = "" })
-    .ExportAndWriteLine();
+Helpers.Presentation.DisplayResult(2020, summaries);

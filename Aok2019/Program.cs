@@ -1,17 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Aok2019.Puzzles;
-using ConsoleTableExt;
-
-var columnNames = new List<string>() { "Puzzel", "Part One", "Part Two" };
-var alignments = new Dictionary<int, TextAligntment>
-{
-    {1, TextAligntment.Right},
-    {2, TextAligntment.Right}
-};
-
-Console.WriteLine("AdventOfCode 2022 | Stefan");
-Console.WriteLine("");
 
 var summaries = new List<List<object>>()
 {
@@ -23,13 +12,4 @@ var summaries = new List<List<object>>()
     Day21.Answer(), Day22.Answer(), Day23.Answer(), Day24.Answer()
 };
 
-var daysToShow = DateTime.Compare(DateTime.Now.Date, DateTime.Parse("2022-12-24").Date) > 0 ? 24 : DateTime.Now.Day;
-
-ConsoleTableBuilder
-    .From(summaries.Take(daysToShow).ToList())
-    .WithColumn(columnNames)
-    .WithFormat(ConsoleTableBuilderFormat.Minimal)
-    .WithTextAlignment(alignments)
-
-    //.WithOptions(new ConsoleTableBuilderOption { DividerString = "" })
-    .ExportAndWriteLine();
+Helpers.Presentation.DisplayResult(2021, summaries);

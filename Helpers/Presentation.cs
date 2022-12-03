@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,13 +19,13 @@ namespace Helpers
 
         public static void DisplayResult(int year, List<List<object>> summaries)
         {
+            var methodName = new StackFrame(1, false).GetMethod()!.DeclaringType!;
             Console.WriteLine($"AdventOfCode {year}");
             Console.WriteLine("");
-
-            var daysToShow = DateTime.Compare(DateTime.Now, new DateTime(year, 12, 24)) > 0 ? 24 : DateTime.Now.Day;
+            summaries.RemoveAll(_ => _.Count == 1);
 
             ConsoleTableBuilder
-                .From(summaries.Take(daysToShow).ToList())
+                .From(summaries)
                 .WithColumn(ColumnNames)
                 .WithFormat(ConsoleTableBuilderFormat.Minimal)
                 .WithTextAlignment(Alignments)
