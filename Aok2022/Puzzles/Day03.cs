@@ -6,8 +6,39 @@ internal class Day03
     {
         var puzzelInfo = Helpers.Puzzels.GetPuzzleInfo();
         if (!puzzelInfo.FileExists)
-            return new List<object>() { puzzelInfo.PuzzleName};
+            return new List<object>() { puzzelInfo.PuzzleName };
 
-        return new List<object>() { puzzelInfo.PuzzleName, "", "" };
+
+        var rucksacks = File.ReadAllLines(puzzelInfo.FileName).ToList();
+
+        // Part One
+        var priorities = "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".ToArray();
+        var prioritySumPartOne = 0;
+
+        foreach (var rucksack in rucksacks)
+        {
+
+            var firstCompartment = rucksack.ToArray().Take(rucksack.Length / 2);
+            var secondCompartment = rucksack.ToArray().Skip(rucksack.Length / 2);
+            var intersectedTypes = firstCompartment.Intersect(secondCompartment);
+            foreach (var intersectedType in intersectedTypes)
+                prioritySumPartOne += Array.IndexOf(priorities, intersectedType);
+        }
+
+        // Part Two
+        var prioritySumPartTwo = 0;
+
+        for (var i = 0; i < rucksacks.Count; i +=3)
+        {
+            
+            var elfOne = rucksacks[i].ToCharArray();
+            var elfTwo = rucksacks[i+1].ToCharArray();
+            var elfThree = rucksacks[i+2].ToCharArray();
+            var intersectedTypes = elfOne.Intersect(elfTwo).Intersect(elfThree);
+            foreach (var intersectedType in intersectedTypes)
+                prioritySumPartTwo += Array.IndexOf(priorities, intersectedType);
+        }
+
+        return new List<object>() { puzzelInfo.PuzzleName, prioritySumPartOne, prioritySumPartTwo };
     }
 }
