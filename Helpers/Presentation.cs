@@ -10,7 +10,7 @@ namespace Helpers
 {
     public class Presentation
     {
-        private static readonly List<string> ColumnNames = new() { "Puzzel", "Part One", "Part Two" };
+        private static readonly List<string> ColumnNames = new() { "Puzzle", "Part One", "Part Two" };
         private static readonly Dictionary<int, TextAligntment> Alignments = new()
         {
             {1, TextAligntment.Right},

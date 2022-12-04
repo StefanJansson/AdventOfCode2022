@@ -1,16 +1,17 @@
 ﻿using System.Text.RegularExpressions;
+using Helpers;
 
 namespace Aok2022.Puzzles;
 
-internal class Day04
+internal static class Day04
 {
     public static List<object> Answer()
     {
-        var puzzelInfo = Helpers.Puzzels.GetPuzzleInfo();
-        if (!puzzelInfo.FileExists)
-            return new List<object>() { puzzelInfo.PuzzleName };
+        var puzzleInfo = Helpers.Puzzles.GetPuzzleInfo();
+        if (!puzzleInfo.FileExists)
+            return new List<object>() { puzzleInfo.Name };
 
-        var allRanges = File.ReadAllLines(puzzelInfo.FileName);
+        var allRanges = puzzleInfo.GetInputAsList();
 
         var fullOverlappingRanges = new List<string>();
         var partialOverlappingRanges = new List<string>();
@@ -33,6 +34,6 @@ internal class Day04
                 partialOverlappingRanges.Add(ranges);
         }
         
-        return new List<object>() { puzzelInfo.PuzzleName, fullOverlappingRanges.Count, partialOverlappingRanges.Count };
+        return new List<object>() { puzzleInfo.Name, fullOverlappingRanges.Count, partialOverlappingRanges.Count };
     }
 }

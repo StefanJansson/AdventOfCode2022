@@ -1,16 +1,17 @@
 ﻿using System.Drawing;
+using Helpers;
 
 namespace Aok2015.Puzzles;
 
-internal class Day03
+internal static class Day03
 {
     public static List<object> Answer()
     {
-        var puzzelInfo = Helpers.Puzzels.GetPuzzleInfo();
-        if (!puzzelInfo.FileExists)
-            return new List<object>() { puzzelInfo.PuzzleName };
+        var puzzleInfo = Helpers.Puzzles.GetPuzzleInfo();
+        if (!puzzleInfo.FileExists)
+            return new List<object>() { puzzleInfo.Name };
 
-        var directions = File.ReadAllText(puzzelInfo.FileName);
+        var directions = puzzleInfo.GetInputAsText();
 
         // Part One
         var locationDropsPartOne = new Dictionary<Point, int>();
@@ -70,8 +71,7 @@ internal class Day03
             else
                 locationDropsPartTwo.Add(currentPointPartTwo[direction % 2], 1);
         }
-
-
-        return new List<object>() { puzzelInfo.PuzzleName, locationDropsPartOne.Count, locationDropsPartTwo.Count };
+        
+        return new List<object>() { puzzleInfo.Name, locationDropsPartOne.Count, locationDropsPartTwo.Count };
     }
 }

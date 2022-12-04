@@ -3,7 +3,7 @@
 using Aok2020.Puzzles;
 using ConsoleTableExt;
 
-var columnNames = new List<string>() { "Puzzel", "Part One", "Part Two" };
+var columnNames = new List<string>() { "Puzzle", "Part One", "Part Two" };
 var alignments = new Dictionary<int, TextAligntment>
 {
     {1, TextAligntment.Right},

@@ -1,17 +1,18 @@
 ﻿using System.Net;
 using System.Text.RegularExpressions;
+using Helpers;
 
 namespace Aok2015.Puzzles;
 
-internal class Day01
+internal static class Day01
 {
     public static List<object> Answer()
     {
-        var puzzelInfo = Helpers.Puzzels.GetPuzzleInfo();
-        if (!puzzelInfo.FileExists)
-            return new List<object>() { puzzelInfo.PuzzleName };
+        var puzzleInfo = Helpers.Puzzles.GetPuzzleInfo();
+        if (!puzzleInfo.FileExists)
+            return new List<object>() { puzzleInfo.Name };
 
-        var fileData = File.ReadAllText(puzzelInfo.FileName);
+        var fileData = puzzleInfo.GetInputAsText();
 
         // Part One
         var ups = Regex.Matches(fileData, @"\(").Count;
@@ -29,7 +30,7 @@ internal class Day01
                 floor--;
             directionNumber++;
         }
-        return new List<object>() { puzzelInfo.PuzzleName, finalFloor, directionNumber };
+        return new List<object>() { puzzleInfo.Name, finalFloor, directionNumber };
     }
 
 }

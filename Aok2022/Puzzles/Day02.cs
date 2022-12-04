@@ -1,14 +1,16 @@
-﻿namespace Aok2022.Puzzles;
+﻿using Helpers;
 
-internal class Day02
+namespace Aok2022.Puzzles;
+
+internal static class Day02
 {
     public static List<object> Answer()
     {
-        var puzzelInfo = Helpers.Puzzels.GetPuzzleInfo();
-        if (!puzzelInfo.FileExists)
-            return new List<object>() { puzzelInfo.PuzzleName };
+        var puzzleInfo = Helpers.Puzzles.GetPuzzleInfo();
+        if (!puzzleInfo.FileExists)
+            return new List<object>() { puzzleInfo.Name };
 
-        var fileData = File.ReadAllLines(puzzelInfo.FileName).ToList();
+        var fileData = puzzleInfo.GetInputAsList();
 
         var opponentRockCode = "A";
         var opponentPaperCode = "B";
@@ -44,7 +46,6 @@ internal class Day02
                           myOptionCodes[
                               (Array.IndexOf(opponentOptionCodes, fileData[i].Substring(0, 1)) +
                                Array.IndexOf(expectedResults, fileData[i].Substring(2, 1))) % 3];
-
         }
 
         var wonMatchesPartTwo = fileData.Count(_ => winningResults.Contains(_));
@@ -55,6 +56,6 @@ internal class Day02
             2 * fileData.Count(_ => _.EndsWith(myPaperCode)) +
             3 * fileData.Count(_ => _.EndsWith(myScissorCode));
 
-        return new List<object>() { puzzelInfo.PuzzleName, choiceBonusesPartOne + 6 * wonMatchesPartOne + 3 * tiedMatchesPartOne, choiceBonusesPartTwo + 6 * wonMatchesPartTwo + 3 * tiedMatchesPartTwo };
+        return new List<object>() { puzzleInfo.Name, choiceBonusesPartOne + 6 * wonMatchesPartOne + 3 * tiedMatchesPartOne, choiceBonusesPartTwo + 6 * wonMatchesPartTwo + 3 * tiedMatchesPartTwo };
     }
 }

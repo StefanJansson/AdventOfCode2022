@@ -1,13 +1,13 @@
 ﻿namespace Aok2021.Puzzles;
 
-internal class Day10
+internal static class Day10
 {
     public static List<object> Answer()
     {
-        var puzzelInfo = Helpers.Puzzels.GetPuzzleInfo();
-        if (!puzzelInfo.FileExists)
-            return new List<object>() { puzzelInfo.PuzzleName };
+        var puzzleInfo = Helpers.Puzzles.GetPuzzleInfo();
+        if (!puzzleInfo.FileExists)
+            return new List<object>() { puzzleInfo.Name };
 
-        return new List<object>() { puzzelInfo.PuzzleName, "", "" };
+        return new List<object>() { puzzleInfo.Name, "", "" };
     }
 }
