@@ -42,10 +42,10 @@ internal static class Day02
 
         for (var i = 0; i < fileData.Count; i++)
         {
-            fileData[i] = fileData[i].Substring(0, 2) +
+            fileData[i] = fileData[i][..2] +
                           myOptionCodes[
-                              (Array.IndexOf(opponentOptionCodes, fileData[i].Substring(0, 1)) +
-                               Array.IndexOf(expectedResults, fileData[i].Substring(2, 1))) % 3];
+                              (Array.IndexOf(opponentOptionCodes, fileData[i][..1]) +
+                               Array.IndexOf(expectedResults, fileData[i][2..3])) % 3];
         }
 
         var wonMatchesPartTwo = fileData.Count(_ => winningResults.Contains(_));
